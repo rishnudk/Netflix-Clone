@@ -3,8 +3,10 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
-} from "firebase/auth/cordova";
+  signOut,
+} from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore/lite";
+import { toast } from "react-toastify";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDRE4ioO2JvGQ7rG8XqUQaKoFx82IphCms",
@@ -31,23 +33,28 @@ const signup = async (name, email, password) => {
     });
   } catch (error) {
     console.log(error);
-    alert(error);
+      toast.error(error.code.split('/') [1].split('-').join(' '))
   }
 };
 
 const login = async (email, password) => {
   try {
-    signInWithEmailAndPassword(auth, email, password)
+    await signInWithEmailAndPassword(auth, email, password)
   } catch (error) {
     console.log(error);
-    alert(error)
+   toast.error(error.code.split('/') [1].split('-').join(' '))
+
     
   }
 };
 
-const logout = () => {
-    signOut(suth)
-}
-
+const logout = async () => {
+  try {
+    await signOut(auth);
+    console.log("User signed out ✅");
+  } catch (error) {
+    console.error("Logout error ❌", error);
+  }
+};
 
 export {auth, db, login, signup, logout}
