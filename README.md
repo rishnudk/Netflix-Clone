@@ -26,17 +26,17 @@ This project includes user authentication (signup, login, logout) and a responsi
 1. Clone this repository:
   
    git clone https://github.com/rishnudk/netflix-clone.git
-   ```
+  
 
 2. Navigate to the project folder:
   
    cd netflix-clone
-   ```
+  
 
 3. Install dependencies:
-   
+    
    npm install
-   ```
+  
 
 4. Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).  
    Copy your Firebase config and replace it inside `firebase.js`.
@@ -48,12 +48,12 @@ This project includes user authentication (signup, login, logout) and a responsi
 Start the development server:
 
 npm run dev
-```
+
 
 Now open your browser and go to:
-```
+
 http://localhost:5173
-```
+
 
 ---
 
