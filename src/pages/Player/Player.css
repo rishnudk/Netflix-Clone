@@ -1,25 +1,134 @@
-.player{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.player img{
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    left: 20px;
-    width: 50px;
-    cursor: pointer;
+/* Whole page wrapper */
+.player-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #000;
+  color: white;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.player iframe{
-    border-radius: 10px;
+/* Back button */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  cursor: pointer;
+  z-index: 10;
 }
-.player-info{
-    display: flex;
+
+/* 2-column container */
+.player-container {
+  display: flex;
+  flex-direction: row; /* side by side on large screens */
+  gap: 20px;
+  height: 100%;
+}
+
+/* Left side → trailer */
+.player-left {
+  flex: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player-left iframe {
+  width: 100%;
+  height: 80vh;
+  border-radius: 10px;
+}
+
+/* Right side → details */
+.player-right {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.player-right h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.player-right p {
+  margin: 5px 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.player-right .overview {
+  font-size: 15px;
+  color: #ccc;
+}
+
+.wishlist-btn {
+  margin-top: 10px;
+  padding: 12px 18px;
+  border: none;
+  background: red;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.wishlist-btn:hover {
+  background: darkred;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .player-container {
+    flex-direction: column; /* stack on tablets */
     align-items: center;
-    justify-content: space-between;
-    width: 90%;
+  }
+
+  .player-left iframe {
+    height: 60vh;
+  }
+
+  .player-right {
+    width: 100%;
+    max-height: auto;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
+  .player-page {
+    padding: 10px;
+  }
+
+  .back-btn {
+    width: 30px;
+  }
+
+  .player-left iframe {
+    height: 40vh; /* smaller video for mobile */
+  }
+
+  .player-right h2 {
+    font-size: 20px;
+  }
+
+  .player-right p {
+    font-size: 14px;
+  }
+
+  .wishlist-btn {
+    width: 100%;
+    text-align: center;
+  }
 }
